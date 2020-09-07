@@ -1,4 +1,10 @@
-file = open("/var/log/secure", "r")
-data = file.read()
-occurrences = data.count("Accepted")
-print('Number of occurrences of the word :', occurrences)
+import time
+
+file = open(r'/var/log/secure', 'r')
+
+while True:
+
+    line = file.readline()
+    if 'Failed' in line or 'Accepted' in line:
+        time.sleep(1)
+        print 'Found ',line
