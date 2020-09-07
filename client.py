@@ -1,10 +1,12 @@
+import sys
 import time
-
-file = open(r'/var/log/secure', 'r')
-
 while True:
-
-    line = file.readline()
-    if 'Failed' in line or 'Accepted' in line:
-        time.sleep(1)
-        print 'Found ',line
+    time.sleep(1)
+    file=open("/var/log/secure", "r")
+    count=0
+    for line in file:
+        if 'Failed' in line or 'Accepted' in line:
+            count=count+1
+#    sys.stdout = open('file', 'w')
+    sys.stdout = open("/var/www/html/index.html", 'w')
+    print("No of SSH attempts on server: ",count)
