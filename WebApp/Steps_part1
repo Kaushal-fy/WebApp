@@ -1,0 +1,19 @@
+Steps on AlphaServer:
+
+Install httpd and php: yum install -y httpd php
+Edit /var/www/html/index.php
+Copy and paste the content of index.php present in github repository and replace the IPs with AlphaClient Ips
+Change permission of file to 755
+Restart Http service: service httpd restart
+
+
+
+
+Steps on AlphaClient(Needs to be done on all the client machines):
+
+Install httpd: yum install -y httpd
+Copy the client.py script from github repository, place it in /opt directory
+Change permission of file to 755
+Make an entry in crontab : * * * * * /opt/client.py
+Restart Http service: service httpd restart
+

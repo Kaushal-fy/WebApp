@@ -1,0 +1,25 @@
+The yml file present in the directory is an Ansible playbook 
+which will deploy the application as specified in the task
+
+Command:
+
+	ansible-playbook playbooks/WebApp.yml
+
+
+The requirements for this playbook to run successfully is:
+1) hosts.ini file in the below format
+
+[AlphaServer]
+54.173.218.233
+
+[AlphaClient]
+34.239.108.71
+3.86.237.107
+
+[local]
+control ansible_connection=local
+
+
+2)index.php and client.py file are present in the correct path
+
+3)Correct Ips need to be specified in index.php file for AlphaClient servers
