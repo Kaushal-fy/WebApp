@@ -1,0 +1,36 @@
+---
+  - hosts: AlphaClient
+    become: true
+    tasks:
+      - name: Install apache
+        yum: name=httpd state=present
+      - name: upload script
+        copy:
+          src: ../client.py
+          dest: /opt
+          mode: 0755
+      - name: update cron
+        cron:
+          name: "Script to check ssh attempts"
+          user: "root"
+          minute: "*"
+          job: python /opt/client.py 
+      - name: restart apache  
+        service: name=httpd state=started enabled=yes
+
+  - hosts: AlphaServer
+    become: true
+    tasks:
+      - name: Installing services
+        yum:
+          name:
+            - httpd
+            - php
+          state: present
+      - name: upload application file
+        copy:
+          src: ../index.php
+          dest: /var/www/html
+          mode: 0755
+      - name: apache restart    
+        service: name=httpd state=started enabled=yes
