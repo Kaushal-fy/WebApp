@@ -14,6 +14,6 @@ Steps on AlphaClient(Needs to be done on all the client machines):
 Install httpd: yum install -y httpd
 Copy the client.py script from github repository, place it in /opt directory
 Change permission of file to 755
-Make an entry in crontab : * * * * * /opt/client.py
+Make an entry in crontab : * * * * * python /opt/client.py
 Restart Http service: service httpd restart
 
